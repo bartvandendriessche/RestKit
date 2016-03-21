@@ -195,7 +195,7 @@ static NSDictionary *RKConnectionAttributeValuesWithObject(RKConnectionDescripti
 - (void)main
 {
     for (RKConnectionDescription *connection in self.connections) {
-        __block BOOL isDeleted;
+        __block BOOL isDeleted = self.managedObject.managedObjectContext == nil;
         [self.managedObject.managedObjectContext performBlockAndWait:^{
             isDeleted=[self.managedObject isDeleted];
         }];
